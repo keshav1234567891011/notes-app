@@ -443,3 +443,15 @@ Project name
 Version
 Dependencies
 Scripts
+
+
+
+
+
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/keshav1234567891011/notes-app.git
+git push -u origin main
