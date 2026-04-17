@@ -13,6 +13,13 @@ const Login = ({ setIsLoggedIn }) => {
       body: JSON.stringify({ email, password }),
     });
 
+    if (!res.ok) {
+      const text = await res.text();
+      console.error(text);
+      alert("Login failed");
+      return;
+    }
+
     const data = await res.json();
 
     if (data.token) {
