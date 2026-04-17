@@ -11,7 +11,7 @@ const App = () => {
 
   // 🔹 Fetch notes from backend
   useEffect(() => {
-    fetch("http://localhost:5000/notes")
+    fetch("https://notes-app-qlxd.onrender.com/notes")
       .then((res) => res.json())
       .then((data) => setNotes(data));
   }, []);
@@ -24,13 +24,16 @@ const App = () => {
     }
     if (editId) {
       // UPDATE
-      const res = await fetch(`http://localhost:5000/notes/${editId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `https://notes-app-qlxd.onrender.com/notes/${editId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title, des }),
         },
-        body: JSON.stringify({ title, des }),
-      });
+      );
 
       const updatedNote = await res.json();
 
@@ -38,7 +41,7 @@ const App = () => {
       setEditId(null);
     } else {
       // ADD
-      const res = await fetch("http://localhost:5000/notes", {
+      const res = await fetch("https://notes-app-qlxd.onrender.com/notes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +59,7 @@ const App = () => {
 
   // 🔹 Delete note
   const deleteNote = async (id) => {
-    await fetch(`http://localhost:5000/notes/${id}`, {
+    await fetch(`https://notes-app-qlxd.onrender.com/notes/${id}`, {
       method: "DELETE",
     });
 

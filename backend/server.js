@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -8,8 +10,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+mongoose.connect(process.env.MONGO_URI)
 
-mongoose.connect("mongodb+srv://yt:iRbvQg6LY8kgOy4p@youtubecompletebackend.blqvbsn.mongodb.net/rndwa?appName=youtubecompletebackend")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("ERROR:", err));
 
